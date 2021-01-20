@@ -1,3 +1,32 @@
+$size: 100px;
+$gap: 1px;
+
 body {
   margin: 0;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div {
+  box-sizing: border-box;
+
+  width: $size;
+  height: $size;
+
+  margin: 0 $gap $gap 0;
+
+  background-color: #eee;
+  border: 1px solid #000;
+
+  text-align: center;
+}
+
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: (($size+$gap)*7);
 }
