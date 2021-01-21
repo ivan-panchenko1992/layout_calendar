@@ -2,13 +2,17 @@ $size: 100px;
 $gap: 1px;
 $border: 1px solid #000;
 
+@mixin centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 body {
   margin: 0;
   height: 100vh;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include centered();
 }
 
 .calendar {
@@ -17,15 +21,17 @@ body {
 
   width: (($size+$gap)*7);
 }
-@for $i from 1 to 31 {
+@for $i from 1 through 31 {
   .calendar div:nth-child(#{$i})::after {
     display: none;
 
     content: "#{$i}";
   }
 }
-@for $i from 1 to 31 {
+@for $i from 1 through 31 {
   .calendar-#{$i} div:nth-child(-n+#{$i}) {
+    @include centered();
+    
     height: $size;
     width: $size;
     box-sizing: border-box;
@@ -37,10 +43,6 @@ body {
 
     background-color: #eee;
     border: $border;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     &::after {
       display: inline;
